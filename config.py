@@ -210,7 +210,8 @@ class MyQtile:
         filename_png = ARCHLOGO
         size = 256
 
-        command = "inkscape {filename_svg} -e={filename_png} -C -w={size} -h={size}".format(**locals())
+        # command = "inkscape {filename_svg} -e={filename_png} -C -w={size} -h={size}".format(**locals())
+        command = "convert -resize {size}x{size} {filename_svg} {filename_png}".format(**locals())
         os.system(command)
 
         file = open(WALLPAPER.replace(".png", '.svg'), 'r')
@@ -232,7 +233,7 @@ class MyQtile:
         size_h = 320
 
         # command = "inkscape {filename_svg} -e={filename_png} -C -w={size_w} -h={size_h}".format(**locals())
-        command = "convert -resize {size_w}x{size_h} {filename_svg}".format(**locals())
+        command = "convert -resize {size_w}x{size_h} {filename_svg} {filename_png}".format(**locals())
 
         os.system(command)
 
