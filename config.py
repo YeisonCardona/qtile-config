@@ -25,7 +25,7 @@ AUDIO_PLAY = "playerctl play-pause"
 
 mod = "mod4"
 
-GROUPS = [("RaspberryPi3", "monadwide"),
+GROUPS = [("RaspberryPi4", "monadwide"),
           ("terminal", "bsp"),
           #("remote", "ratiotile"),
           #("development", "monadwide"),
@@ -179,7 +179,7 @@ class MyQtile:
         self.floating_layout = self.init_floating_layout()
 
         # if os.path.join(HOME, 'wallpappers', "default.jpg"):
-            #WALLPAPER = os.path.join(HOME, 'wallpappers', "default.jpg")
+        #WALLPAPER = os.path.join(HOME, 'wallpappers', "default.jpg")
         # else:
         self.set_art()
 
@@ -231,7 +231,9 @@ class MyQtile:
         size_w = 480
         size_h = 320
 
-        command = "inkscape {filename_svg} -e={filename_png} -C -w={size_w} -h={size_h}".format(**locals())
+        # command = "inkscape {filename_svg} -e={filename_png} -C -w={size_w} -h={size_h}".format(**locals())
+        command = "convert -resize {size_w}x{size_h} {filename_svg}".format(**locals())
+
         os.system(command)
 
     # #----------------------------------------------------------------------
@@ -243,31 +245,31 @@ class MyQtile:
         # w = datetime.date.today().replace(day=1).weekday() + 2
 
         # if datetime.date.today().month < 12:
-            # prev_days_count = (datetime.date.today().replace(day=1, month=datetime.date.today().month) - datetime.timedelta(days=1)).day
-            # days_count = (datetime.date.today().replace(day=1, month=datetime.date.today().month+1) - datetime.timedelta(days=1)).day
+        # prev_days_count = (datetime.date.today().replace(day=1, month=datetime.date.today().month) - datetime.timedelta(days=1)).day
+        # days_count = (datetime.date.today().replace(day=1, month=datetime.date.today().month+1) - datetime.timedelta(days=1)).day
         # else:
-            # days_count = (datetime.date.today().replace(day=1, month=1, year=datetime.date.today().year+1) - datetime.timedelta(days=1)).day
+        # days_count = (datetime.date.today().replace(day=1, month=1, year=datetime.date.today().year+1) - datetime.timedelta(days=1)).day
 
         # #hide days previous month
         # for i in range(1, w):
-            # wallpaper = wallpaper.replace('@{}@'.format(str(i).rjust(2, '0')), '{}'.format(prev_days_count-w+i+1))
+        # wallpaper = wallpaper.replace('@{}@'.format(str(i).rjust(2, '0')), '{}'.format(prev_days_count-w+i+1))
 
         # #visible days
         # for i in range(w, days_count+w):
-            # wallpaper = wallpaper.replace('@{}@'.format(str(i).rjust(2, '0')), '{}'.format(i-w+1))
-            # if day == (i - w + 1):
-                # current_day = i
+        # wallpaper = wallpaper.replace('@{}@'.format(str(i).rjust(2, '0')), '{}'.format(i-w+1))
+        # if day == (i - w + 1):
+        # current_day = i
         # #hidden days
         # for i in range(days_count, 43):
-            # wallpaper = wallpaper.replace('@{}@'.format(str(i).rjust(2, '0')), '{}'.format(i-days_count-w+1))
+        # wallpaper = wallpaper.replace('@{}@'.format(str(i).rjust(2, '0')), '{}'.format(i-days_count-w+1))
 
         # for i in range(1, 43):
-            # b = "#80{}80".format(hex(i)[2:].rjust(2, '0'))
+        # b = "#80{}80".format(hex(i)[2:].rjust(2, '0'))
 
-            # if current_day == i:
-                # wallpaper = wallpaper.replace(b, self.theme['primary'])
-            # else:
-                # wallpaper = wallpaper.replace(b, '#000000')
+        # if current_day == i:
+        # wallpaper = wallpaper.replace(b, self.theme['primary'])
+        # else:
+        # wallpaper = wallpaper.replace(b, '#000000')
 
         # return wallpaper
 
@@ -541,13 +543,13 @@ class MyQtile:
     def init_floating_layout(self):
         """"""
         # frames = ('Download',
-                  # 'dropbox',
-                  # 'file_progress',
-                  # 'notification',
-                  # 'toolbar',
-                  # 'splash',
-                  # 'dialog',
-                  # )
+        # 'dropbox',
+        # 'file_progress',
+        # 'notification',
+        # 'toolbar',
+        # 'splash',
+        # 'dialog',
+        # )
 
         #floating_layout = layout.floating.Floating(float_rules=[{'wmclass': x} for x in frames], border_focus=self.theme["border"], border_normal=self.theme["active"], border_width=self.theme["border-width"])
         floating_layout = layout.floating.Floating(border_focus=self.theme["border"], border_normal=self.theme["active"], border_width=self.theme["border-width"])
